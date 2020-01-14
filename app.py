@@ -8,5 +8,10 @@ def hello_world():
     return 'Hello World!'
 
 
+@app.route('/index')
+def index():
+    return 'Index Page'
+
+
 if __name__ == '__main__':
     app.run()
