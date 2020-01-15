@@ -1,6 +1,7 @@
 import os
 from flask import Flask, flash, request, redirect, url_for
 from werkzeug.utils import secure_filename
+from flask import send_from_directory
 
 UPLOAD_FOLDER = 'C:\\flask'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -46,6 +47,12 @@ def upload_file():
       <input type=submit value=Upload>
     </form>
     '''
+
+
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'],
+                               filename)
 
 
 if __name__ == '__main__':
